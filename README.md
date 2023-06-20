@@ -63,7 +63,7 @@ __________________________________________________
       - 1
       - 2
       - 3
-    - julien@ubuntu:~/monty$ 
+    - julien@ubuntu:~/monty$
 - Repo: GitHub repository: monty
 __________________________________________________
 # 2. pop ------------------ mandatory
@@ -92,7 +92,7 @@ __________________________________________________
       - 2
       - 1
       - 1
-    - julien@ubuntu:~/monty$ 
+    - julien@ubuntu:~/monty$
 - Repo: GitHub repository: monty
 __________________________________________________
 # 3. swap ------------------ mandatory
@@ -117,7 +117,7 @@ __________________________________________________
       - 2
       - 3
       - 1
-    - julien@ubuntu:~/monty$ 
+    - julien@ubuntu:~/monty$
 - Repo: GitHub repository: monty
 __________________________________________________
 # 4. add ------------------ mandatory
@@ -139,7 +139,7 @@ __________________________________________________
         - add
         - pall
 
-      - julien@ubuntu:~/monty$ ./monty bytecodes/12.m 
+      - julien@ubuntu:~/monty$ ./monty bytecodes/12.m
         - 3
         - 2
         - 1
@@ -241,10 +241,10 @@ __________________________________________________
       can't pchar, value out of range, followed by a new line, and exit with the status EXIT_FAILURE
     - If the stack is empty, print the error message L<line_number>: can't pchar, stack empty,
       followed by a new line, and exit with the status EXIT_FAILURE
-      - julien@ubuntu:~/monty$ cat bytecodes/28.m 
+      - julien@ubuntu:~/monty$ cat bytecodes/28.m
         - push 72
         - pchar
-      - julien@ubuntu:~/monty$ ./monty bytecodes/28.m 
+      - julien@ubuntu:~/monty$ ./monty bytecodes/28.m
         - H
       - julien@ubuntu:~/monty$
 - Repo: GitHub repository: monty
@@ -261,7 +261,7 @@ __________________________________________________
     - the value of the element is 0
     - the value of the element is not in the ascii table
   - If the stack is empty, print only a new line
-    - julien@ubuntu:~/monty$ cat bytecodes/31.m 
+    - julien@ubuntu:~/monty$ cat bytecodes/31.m
       - push 1
       - push 2
       - push 3
@@ -276,7 +276,7 @@ __________________________________________________
       - push 99
       - push 83
       - pstr
-    - julien@ubuntu:~/monty$ ./monty bytecodes/31.m 
+    - julien@ubuntu:~/monty$ ./monty bytecodes/31.m
       - School
     - julien@ubuntu:~/monty$
 - Repo: GitHub repository: monty
@@ -324,7 +324,7 @@ __________________________________________________
       - 2
       - 1
       - 0
-    - julien@ubuntu:~/monty$ 
+    - julien@ubuntu:~/monty$
 - Repo: GitHub repository: monty
 __________________________________________________
 # 14. rotr ------------------ #advanced
@@ -367,7 +367,7 @@ __________________________________________________
       - add
       - pall
     - julien@ubuntu:~/monty$ ./monty bytecodes/47.m
-      - 1 
+      - 1
       - 2
       - 3
       - 6
@@ -395,7 +395,7 @@ __________________________________________________
   - All your Brainf*ck files should be stored inside the bf sub directory
   - You can install the bf interpreter to test your code: sudo apt-get install bf
   - Read: Brainf*ck
-    - julien@ubuntu:~/monty/bf$ bf 1000-school.bf 
+    - julien@ubuntu:~/monty/bf$ bf 1000-school.bf
       - School
     - julien@ubuntu:~/monty/bf$
 - Repo: GitHub repository: monty
@@ -430,7 +430,7 @@ __________________________________________________
 
 - Multiply two digits given by the user.
   - Read the two digits from stdin, multiply them, and print the result, followed by a new line
-    - julien@ubuntu:~/monty/bf$ bf 1003-mul.bf 
+    - julien@ubuntu:~/monty/bf$ bf 1003-mul.bf
       - 77
       - 49
     - julien@ubuntu:~/monty/bf$
