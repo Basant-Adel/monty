@@ -17,12 +17,13 @@ int is_number(char *str)
 		is_n++;
 	}
 
-	for (; str[is_n] != '\0'; is_n++)
+	while (str[is_n])
 	{
 		if (str[is_n] < '0' || str[is_n] > '9')
 		{
-			return (-1);
+			return (0);
 		}
+		is_n++;
 	}
-	return (0);
+	return (1);
 }

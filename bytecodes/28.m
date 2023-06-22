@@ -1,2 +1,2 @@
 push 72
-pchar_stack
+pchar

@@ -3,7 +3,11 @@
 
 #define _GNU_SOURCE
 #define UNUSED(x) (void)(x)
-#define INSTRUCTIONS_COUNT 14
+#define INSTRUCTIONS_COUNT 17
+#define STACK 1
+#define QUEUE 0
+#define BUFFER_SIZE 1000
+/* #define INSTRUCTIONS_COUNT 14 */
 
 /* The C Standard Library */
 
@@ -71,6 +75,6 @@ void divides_stack(stack_t **stack, unsigned int line_number);
 void subtracts_stack(stack_t **stack, unsigned int line_number);
 void multiplies_stack(stack_t **stack, unsigned int line_number);
 void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number);
-void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif

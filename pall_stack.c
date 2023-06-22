@@ -7,9 +7,12 @@
  *Return: Void (0) successful
 */
 
-void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *number;
+
+	UNUSED(line_number);
+	/* stack_t *number; */
 
 	for (number = *stack; number != NULL; number = number->next)
 	{
