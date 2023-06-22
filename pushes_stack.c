@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * pushes_stack - A function that pushes an element to the top of a stack
+ * push - A function that pushes an element to the top of a stack
  *@stack: A pointer to the top element of the stack
  *@line_number: It's a parameter that represents the line number
  *Return: Void (0) successful
 */
 
-void pushes_stack(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	int number;
 	char *arg;

@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
 	size_t line_length = 0;
 	unsigned int line_number = 1;
 	instruction_t command[] = {
-		{NULL, NULL}, {"push", pushes_stack}, {"pstr", print_string_stack},
-		{"mod", modulo_stack}, {"pall", pall_stack}, {"nop", nop_stack},
+		{NULL, NULL}, {"push", push}, {"pstr", print_string_stack},
+		{"mod", modulo_stack}, {"pall", pall}, {"nop", nop_stack},
 		{"swap", swaps_stack}, {"pchar", pchar_stack}, {"rotl", rotates_stack},
 		{"pint", prints_stack}, {"pop", pop_stack}, {"sub", subtracts_stack},
 		{"div", divides_stack}, {"add", add_stack}, {"mul", multiplies_stack}

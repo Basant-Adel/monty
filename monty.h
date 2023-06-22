@@ -64,14 +64,13 @@ void nop_stack(stack_t **stack, unsigned int line_number);
 void pop_stack(stack_t **stack, unsigned int line_number);
 void swaps_stack(stack_t **stack, unsigned int line_number);
 void modulo_stack(stack_t **stack, unsigned int line_number);
-void pushes_stack(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
 void prints_stack(stack_t **stack, unsigned int line_number);
 void print_string_stack(stack_t **head, unsigned int counter);
 void divides_stack(stack_t **stack, unsigned int line_number);
 void subtracts_stack(stack_t **stack, unsigned int line_number);
 void multiplies_stack(stack_t **stack, unsigned int line_number);
 void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number);
-void pall_stack(stack_t **stack, __attribute__ ((unused))
-		unsigned int line_number);
+void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
 
 #endif
