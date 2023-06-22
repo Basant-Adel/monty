@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * main_monty - It's a Main Monty Function
+ * main - It's a Main Monty Function
  *@argc: It's an Argument Number
  *@argv: It's an Argument Vector
  *Return: (0) successful, Depend Condition
  */
 
-int main_monty(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	FILE *file = fopen(argv[1], "r");
 	int b;
@@ -17,13 +17,13 @@ int main_monty(int argc, char *argv[])
 	size_t line_length = 0;
 	unsigned int line_number = 1;
 	instruction_t command[] = {
-		{NULL, NULL}, {"pstr", print_string_stack}, {"pchar", pchar_stack},
+		{NULL, NULL}, {"push", pushes_stack}, {"pstr", print_string_stack},
 		{"mod", modulo_stack}, {"pall", pall_stack}, {"nop", nop_stack},
-		{"swap", swaps_stack}, {"push", pushes_stack}, {"rotl", rotates_stack},
+		{"swap", swaps_stack}, {"pchar", pchar_stack}, {"rotl", rotates_stack},
 		{"pint", prints_stack}, {"pop", pop_stack}, {"sub", subtracts_stack},
 		{"div", divides_stack}, {"add", add_stack}, {"mul", multiplies_stack}
 		};
-	check(argc, argv, file);
+	check_arguments(argc, argv, file);
 	while (getline(&line, &line_length, file) != -1 && !feof(file))
 	{
 		opcode = strtok(line, " \n");

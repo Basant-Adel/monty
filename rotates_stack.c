@@ -17,7 +17,6 @@ void rotates_stack(stack_t **head, unsigned int counter)
 	if (*head == NULL || (*head)->next == NULL)
 	/* It checks if the stack is either empty or has only one element. */
 	{
-		return ();
 	}
 
 	n = (*head)->n;

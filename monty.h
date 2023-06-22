@@ -53,6 +53,7 @@ typedef struct instruction_s
 
 /* The prototypes of all your functions */
 
+int main(int argc, char *argv[]);
 int is_number(char *argument);
 void frees_stack(stack_t *stack);
 void pchar_stack(stack_t **head, unsigned int counter);

@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * pall_stack - A function to Print all the values on the stack (pall_stack)
+ * pall_stack - A function to Prints all the values on the stack (pall_stack)
  *@stack: A pointer to the top element of the stack
  *@line_number: It's a parameter that represents the line number
  *Return: Void (0) successful
