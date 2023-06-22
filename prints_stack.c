@@ -10,6 +10,7 @@
 void prints_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *number;
+
 	number = *stack;
 
 	if (number == NULL)
