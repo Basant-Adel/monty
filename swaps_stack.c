@@ -13,6 +13,7 @@ void swaps_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *number;
 	int switch_node;
+
 	number = *stack;
 
 	if (number == NULL || number->next == NULL)

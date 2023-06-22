@@ -1,7 +1,8 @@
 #include "monty.h"
 
 /**
- * subtracts_stack - A function that subtracts the top and second top elements of stack
+ * subtracts_stack - A function that subtracts the top
+ *and second top elements of stack
  *@stack: A pointer to the top element of the stack
  *@line_number: It's a parameter that represents the line number
  *Return: Void (0) successful
@@ -11,6 +12,7 @@ void subtracts_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *number;
 	int subtract;
+
 	number = *stack;
 
 	if (number == NULL || number->next == NULL)
