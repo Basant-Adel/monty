@@ -9,24 +9,24 @@
 
 void rotates_stack(stack_t **head, unsigned int counter)
 {
-    stack_t *top_element = *head;
-    int n;
+	stack_t *top_element = *head;
+	int n;
 
-    (void)counter;
+	(void)counter;
 
-    if (*head == NULL || (*head)->next == NULL)
-    /* It checks if the stack is either empty or has only one element. */
-    {
-        return;
-    }
+	if (*head == NULL || (*head)->next == NULL)
+	/* It checks if the stack is either empty or has only one element. */
+	{
+		return ();
+	}
 
-    n = (*head)->n;
+	n = (*head)->n;
 
-    while (top_element->next != NULL)
-    {
-        top_element->n = top_element->next->n;
-        top_element = top_element->next;
-    }
+	while (top_element->next != NULL)
+	{
+		top_element->n = top_element->next->n;
+		top_element = top_element->next;
+	}
 
-    top_element->n = n;
+	top_element->n = n;
 }
