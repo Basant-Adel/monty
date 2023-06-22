@@ -12,6 +12,7 @@ void pushes_stack(stack_t **stack, unsigned int line_number)
 	int number;
 	char *arg;
 	stack_t *new_node = malloc(sizeof(stack_t));
+
 	arg = strtok(NULL, " ");
 
 	if (arg == NULL)

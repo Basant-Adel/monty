@@ -7,7 +7,8 @@
  *Return: Void (0) successful
 */
 
-void pall_stack(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void pall_stack(stack_t **stack, __attribute__ ((unused))
+		unsigned int line_number)
 {
 	stack_t *number;
 
