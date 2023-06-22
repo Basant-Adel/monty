@@ -16,56 +16,35 @@ int main_monty(int argc, char *argv[])
 	stack_t *stack = NULL;
 	size_t line_length = 0;
 	unsigned int line_number = 1;
-
 	instruction_t command[] = {
-		{NULL, NULL},
-		{"pop", pop_stack},
-		{"add", add_stack},
-		{"nop", nop_stack},
-		{"pall", pall_stack},
-		{"mod", modulo_stack},
-		{"swap", swaps_stack},
-		{"pint", prints_stack},
-		{"div", divides_stack},
-		{"pchar", pchar_stack},
-		{"push", pushes_stack},
-		{"rotl", rotates_stack},
-		{"sub", subtracts_stack},
-		{"mul", multiplies_stack},
-		{"pstr", print_string_stack}
-	};
-
+		{NULL, NULL}, {"pstr", print_string_stack}, {"pchar", pchar_stack},
+		{"mod", modulo_stack}, {"pall", pall_stack}, {"nop", nop_stack},
+		{"swap", swaps_stack}, {"push", pushes_stack}, {"rotl", rotates_stack},
+		{"pint", prints_stack}, {"pop", pop_stack}, {"sub", subtracts_stack},
+		{"div", divides_stack}, {"add", add_stack}, {"mul", multiplies_stack}
+		};
 	check(argc, argv, file);
-
 	while (getline(&line, &line_length, file) != -1 && !feof(file))
 	{
 		opcode = strtok(line, " \n");
-
 		if (opcode == NULL)
 		{
 			line_number++;
 			continue;
-		}
-
-		for (b = 0; command[b].opcode != NULL; b++)
+		} for (b = 0; command[b].opcode != NULL; b++)
 		{
-
 			if (strcmp(opcode, command[b].opcode) == 0)
 			{
 				command[b].f(&stack, line_number);
 				break;
 			}
 		}
-
 		if (command[b].opcode == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
-
-		line_number++;
-	}
-
+		line_number++; }
 	free(line);
 	frees_stack(stack);
 	fclose(file);

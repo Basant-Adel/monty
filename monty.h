@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #define _GNU_SOURCE
 #define UNUSED(x) (void)(x)
 #define INSTRUCTIONS_COUNT 14
@@ -69,6 +70,7 @@ void divides_stack(stack_t **stack, unsigned int line_number);
 void subtracts_stack(stack_t **stack, unsigned int line_number);
 void multiplies_stack(stack_t **stack, unsigned int line_number);
 void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number);
-void pall_stack(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
+void pall_stack(stack_t **stack, __attribute__ ((unused))
+		unsigned int line_number);
 
 #endif
