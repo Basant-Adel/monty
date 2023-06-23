@@ -12,6 +12,11 @@ int is_number(char *str)
 
 	str = strtok(str, " \n");
 
+	if (!str)
+	{
+		return (0);
+	}
+
 	if (str[0] == '-')
 	{
 		is_n++;
