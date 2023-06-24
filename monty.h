@@ -58,6 +58,7 @@ typedef struct instruction_s
 /* The prototypes of all your functions */
 
 int main(int argc, char *argv[]);
+int main1(int argc, char *argv[]);
 int is_number(char *argument);
 void frees_stack(stack_t *stack);
 void pchar_stack(stack_t **head, unsigned int counter);
@@ -74,6 +75,7 @@ void print_string_stack(stack_t **head, unsigned int counter);
 void divides_stack(stack_t **stack, unsigned int line_number);
 void subtracts_stack(stack_t **stack, unsigned int line_number);
 void multiplies_stack(stack_t **stack, unsigned int line_number);
+int execute_file(char *file_name);
 void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 

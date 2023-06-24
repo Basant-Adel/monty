@@ -9,6 +9,23 @@
 
 int main(int argc, char *argv[])
 {
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	return (execute_file(argv[1]));
+}
+
+/**
+ * main1 - It's a Main Monty Function
+ *@argc: It's an Argument Number
+ *@argv: It's an Argument Vector
+ *Return: (0) successful, Depend Condition
+ */
+
+int main1(int argc, char *argv[])
+{
 	FILE *file = fopen(argv[1], "r");
 	int b;
 	char *line = NULL;

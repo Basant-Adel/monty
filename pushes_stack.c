@@ -13,9 +13,9 @@ void push(stack_t **stack, unsigned int line_number)
 	char *arg;
 	stack_t *new = malloc(sizeof(stack_t));
 
-	arg = strtok(NULL, " \n");
+	arg = strtok(NULL, " /n");
 
-	if (!arg)
+	if (arg == NULL)
 	/* It checks If "arg" is indeed pointing to NULL */
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
