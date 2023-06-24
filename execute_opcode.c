@@ -11,9 +11,9 @@
 void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number)
 {
 	int b;
-
+	int check_instruction = -1;
+	char *arg;
 	instruction_t command[] = {
-		{NULL, NULL},
 		{"pop", pop_stack},
 		{"add", add_stack},
 		{"nop", nop_stack},
@@ -29,19 +29,31 @@ void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number)
 		{"mul", multiplies_stack},
 		{"pstr", print_string_stack}
 	};
+	
+	arg = strtok(opcode, " \n");
 
-	for (b = 0; command[b].opcode != NULL; b++)
+	if (arg[0] == '#')
 	{
-		if (strcmp(opcode, command[b].opcode) == 0)
+		nop_stack(&stack, line_number);
+		return;
+	}
+
+	for (b = 0; b < INSTRUCTION_NUMS; b++)
+	{
+		if (strcmp(arg, command[b].opcode) == 0)
 		{
-			command[b].f(&stack, line_number);
+			check_instruction = b;
 			break;
 		}
 	}
 
-	if (command[b].opcode == NULL)
+	if (check_instruction == -1)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		command[b].f(&stack, line_number);
 	}
 }

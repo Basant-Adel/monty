@@ -3,7 +3,7 @@
 
 #define _GNU_SOURCE
 #define UNUSED(x) (void)(x)
-#define INSTRUCTIONS_COUNT 17
+#define INSTRUCTION_NUMS 14
 #define STACK 1
 #define QUEUE 0
 #define BUFFER_SIZE 1000

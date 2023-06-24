@@ -9,13 +9,13 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	int number;
+	int number = 0;
 	char *arg;
 	stack_t *new = malloc(sizeof(stack_t));
 
-	arg = strtok(NULL, " ");
+	arg = strtok(NULL, " \n");
 
-	if (arg == NULL)
+	if (!arg)
 	/* It checks If "arg" is indeed pointing to NULL */
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);

@@ -9,7 +9,7 @@ void pop_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *re_element;
 
-	if (*stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	/*To check if the value of the pointer variable stack is pointing to NULL*/
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);

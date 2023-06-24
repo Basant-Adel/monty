@@ -9,14 +9,14 @@
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *number = *stack;
+	const stack_t *number = *stack;
 
 	UNUSED(line_number);
 	/* stack_t *number; */
 
 	while (number)
 	{
-		fprintf(stdout, "%d\n", number->n);
+		printf("%d\n", number->n);
 		number = number->next;
 	}
 }

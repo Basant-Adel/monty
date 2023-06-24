@@ -7,8 +7,8 @@
  *Return: Void (0) successful
 */
 
-void nop_stack(__attribute__ ((unused))stack_t **stack,
-	  __attribute__ ((unused))unsigned int line_number)
+void nop_stack(stack_t **stack, unsigned int line_number)
 {
-	;
+	UNUSED(stack);
+	UNUSED(line_number);
 }
