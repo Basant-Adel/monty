@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * modulo_stack - A function to computes the remainder of the division
+ * _mod - A function to computes the remainder of the division
  *of the second element of the stack by the top element of the stack
  *
  *@stack: A pointer to the top element of the stack
@@ -9,27 +9,39 @@
  *Return: Void (0) successful
 */
 
-void modulo_stack(stack_t **stack, unsigned int line_number)
+void _mod(stack_t **stack, unsigned int line_number)
 {
-	int number;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-	/* It checks if the stack is either empty or has only one element. */
+	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		_mod_error(line_number);
 	}
 
-	number = (*stack)->next->n;
-
-	if (number == 0)
-	/* To check if the value of the variable number is equal to 0. */
+	if ((*stack)->next)
 	{
-		fprintf(stderr, "L%d: division by zero", line_number);
-		exit(EXIT_FAILURE);
-	}
 
-	number = number % (*stack)->n;
-	pop_stack(stack, line_number);
-	(*stack)->n = number;
+		if ((*stack)->n == 0)
+		{
+			_div_0_error(line_number);
+		}
+
+		(*stack)->next->n %= (*stack)->n;
+		top_n_del(stack);
+	}
+	else
+	{
+		_mod_error(line_number);
+	}
+}
+
+/**
+ * _mod_error - A function to Print Modulo ERROR to element
+ *@line_number: It's a parameter that represents the line number
+ *Return: Void (0) successful
+ */
+
+void _mod_error(int line_number)
+{
+	fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+	all_free();
+	exit(EXIT_FAILURE);
 }

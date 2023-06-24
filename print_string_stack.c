@@ -1,26 +1,30 @@
 #include "monty.h"
 
 /**
- * print_string_stack -  A function to Print string starting at top of stack
- *@head: A pointer to the top element of the stack Head.
- *@counter: It's a parameter that represents the line number
- *Return: Void (0) successful
+ * _pstr - A function to Print string starting at top of stack
+ *@stack: A pointer to the top element of the stack
+ *@line_number: It's a parameter that represents the line number
+ *Return : Void (0) successful
  */
 
-void print_string_stack(stack_t **head, unsigned int counter)
+void _pstr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top_element = *head;
-	(void)counter;
+	stack_t *b;
 
-	while (top_element != NULL)
+	UNUSED(line_number);
+	b = *stack;
+
+	while (b)
 	{
-		if (top_element->n <= 0 || top_element->n > 127)
+		if ((b->n >= 65 && b->n <= 90) || (b->n >= 97 && b->n <= 122))
+		{
+			printf("%c", b->n);
+			b = b->next;
+		}
+		else
 		{
 			break;
 		}
-
-		printf("%c", top_element->n);
-		top_element = top_element->next;
 	}
 
 	printf("\n");

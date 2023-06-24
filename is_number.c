@@ -3,32 +3,28 @@
 /**
  * is_number - A function to Check if a string is a number or not
  *@str: It's a String
- *Return: Depend Condition
-*/
+ *Return: (1)-> Valid integer (0)-> Otherwise
+ */
 
 int is_number(char *str)
 {
-	int is_n = 0;
+	int b = 0;
 
-	str = strtok(str, " \n");
-
-	if (!str)
+	if (str[b] == '-')
 	{
-		return (0);
+		b++;
 	}
 
-	if (str[0] == '-')
+	while (str[b])
 	{
-		is_n++;
-	}
 
-	while (str[is_n])
-	{
-		if (str[is_n] < '0' || str[is_n] > '9')
+		if (!(str[b] >= '0' && str[b] <= '9'))
 		{
 			return (0);
 		}
-		is_n++;
+
+		b++;
 	}
+
 	return (1);
 }

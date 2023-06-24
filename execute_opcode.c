@@ -2,90 +2,112 @@
 
 /**
  * execute_file - A function that Executes the file
- *@file_name: It's a file name
- *Return: (0) successful
-*/
+ *@name_f: Name of the file containing the operations
+ *Return: (0)-> Successful (-1)-> Failure
+ */
 
-int execute_file(char *file_name)
+int execute_file(char *name_f)
 {
-	FILE *file = fopen(file_name, "r");
-	char *line = NULL;
-	size_t line_length = 0;
-	stack_t *stack = NULL;
-	char *opcode = NULL;
-	unsigned int line_number = 1;
+	FILE *the_file = fopen(name_f, "r");
+	char *the_line = NULL;
+	size_t _length_line = 0;
+	ssize_t read_line;
 
-	if (file == NULL)
+	if (the_file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", file_name);
-		exit(EXIT_FAILURE);
+		_fopen_error(name_f);
 	}
-	/*Read and execute each line until the end of the file*/
-	while (getline(&line, &line_length, file) != -1 && !feof(file))
+
+	data_here.file = the_file;
+
+	while ((read_line = getline(&the_line, &_length_line, the_file)) != -1)
 	{
-		opcode = strtok(line, " \n");
-		if (opcode == NULL)
+		data_here.line_number++;
+		data_here.line = the_line;
+		if (is_empty_line(data_here.line) == 1)
 		{
-			line_number++;
-			continue;
+			execute_line(data_here.line, data_here.line_number);
 		}
-		execute_opcode(line, stack, line_number);
-		line_number++;
 	}
-	frees_stack(stack);
-	fclose(file);
-	free(line);
+	free_stack(data_here.stack);
+	fclose(the_file);
+	free(the_line);
 	return (0);
 }
 
 /**
- * execute_opcode - A function that Executes the opcode
- *@opcode: It's a parameter that represents operation code in Monty language
- *@stack: A pointer to the top element of the stack
+ * execute_line - A function that Executes the operation in single line
+ *@line: Line of operation
  *@line_number: It's a parameter that represents the line number
  *Return: Void (0) successful
 */
 
-void execute_opcode(char *opcode, stack_t *stack, unsigned int line_number)
+void execute_line(char *line, int line_number)
 {
 	int b;
-	int check_instruction = -1;
-	char *arg = strtok(opcode, " \n");
-	instruction_t command[] = {
-		{"pop", pop_stack},
-		{"add", add_stack},
-		{"nop", nop_stack},
-		{"pall", pall},
-		{"mod", modulo_stack},
-		{"swap", swaps_stack},
-		{"pint", prints_stack},
-		{"div", divides_stack},
-		{"pchar", pchar_stack},
-		{"push", push},
-		{"rotl", rotates_stack},
-		{"sub", subtracts_stack},
-		{"mul", multiplies_stack},
-		{"pstr", print_string_stack}
+	int is_inst = -1;
+	instruction_t instructions[] = {
+		{"push", _push},
+		{"pop", _pop}, {"mod", _mod},
+		{"pall", _pall},
+		{"pint", _pint}, {"swap", _swap},
+		{"nop", _nop}, {"add", _add},
+		{"sub", _sub}, {"mul", _mul},
+		{"div", _div}, {"mul", _mul},
+		{"pchar", _pchar}, {"queue", _queue},
+		{"pstr", _pstr}, {"stack", _stack},
+		{"rotl", _rotl}, {"rotr", _rotr},
 	};
-
-	if (arg[0] == '#')
+	data_here.arg1 = strtok(line, " \n");
+	data_here.arg2 = strtok(NULL, " \n");
+	if (data_here.arg1[0] == '#')
 	{
-		nop_stack(&stack, line_number);
+		_nop(&data_here.stack, line_number);
 		return;
 	}
-	for (b = 0; b < INSTRUCTION_NUMS; b++)
+	for (b = 0; b < INSTRUCTIONS_COUNT; b++)
 	{
-		if (strcmp(arg, command[b].opcode) == 0)
+		if (strcmp(data_here.arg1, instructions[b].opcode) == 0)
 		{
-			check_instruction = b;
+			is_inst = b;
 			break;
 		}
 	}
-	if (check_instruction == -1)
+
+	if (is_inst != -1)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-		exit(EXIT_FAILURE);
+		instructions[b].f(&data_here.stack, line_number);
 	}
 	else
-		command[b].f(&stack, line_number);
+	{
+		inst_invalid_error(line_number, data_here.arg1);
+	}
+}
+
+/**
+ * is_empty_line - A function that Check if the Line is empty or not
+ *@line: It's a Line to check if it empty or not
+ *Return: (1)-> The line is empty (0)-> Otherwise
+ */
+
+int is_empty_line(char *line)
+{
+	int b;
+	int length_of_line = strlen(line);
+
+	if (length_of_line > 0)
+	{
+		if (line[length_of_line - 1] == '\n')
+		{
+			for (b = 0; b < length_of_line - 1; b++)
+			{
+				if (line[b] != ' ')
+				{
+					return (1);
+				}
+			}
+			return (0);
+		}
+	}
+	return (0);
 }

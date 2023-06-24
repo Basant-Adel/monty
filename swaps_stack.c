@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * swaps_stack - A function in the Monty language interpreter that swaps
+ * _swap - A function in the Monty language interpreter that swaps
  *the positions of the top two elements of the stack.
  *
  *@stack: A pointer to the top element of the stack
@@ -9,21 +9,40 @@
  *Return: Void (0) successful
 */
 
-void swaps_stack(stack_t **stack, unsigned int line_number)
+void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *number;
-	int switch_node;
 
-	number = *stack;
+	int element;
 
-	if (number == NULL || number->next == NULL)
-	/* It checks if the number is either empty or has only one element. */
+	if (stack == NULL || *stack == NULL)
 	{
-		printf("L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		_swap_error(line_number);
 	}
 
-	switch_node = number->n;
-	number->n = number->next->n;
-	number->next->n = switch_node;
+	if ((*stack)->next)
+	{
+		element = (*stack)->n;
+		(*stack)->n = (*stack)->next->n;
+		(*stack)->next->n = element;
+	}
+	else
+	{
+		_swap_error(line_number);
+	}
+
+}
+
+/**
+ * _swap_error - A function to Print Swap ERROR to element
+ *@line_number: It's a parameter that represents the line number
+ *Return: Void (0) successful
+ */
+
+void _swap_error(int line_number)
+{
+
+	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+	all_free();
+	exit(EXIT_FAILURE);
+
 }

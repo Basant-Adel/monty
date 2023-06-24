@@ -1,34 +1,59 @@
 #include "monty.h"
 
 /**
- * divides_stack - A function that divides the second element of the stack
+ * _div - A function that divides the second element of the stack
  *by the top element of the stack.
  *@stack: A pointer to the top element of the stack
  *@line_number: It's a parameter that represents the line number
  *Return: Void (0) successful
 */
 
-void divides_stack(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
-	int number;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-	/* It checks if the stack is either empty or has only one element. */
+	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		_div_error(line_number);
 	}
 
-	number = (*stack)->next->n;
-
-	if (number == 0)
-	/* To check if the value of the variable number is equal to 0. */
+	if ((*stack)->next)
 	{
-		fprintf(stderr, "L%d: division by zero", line_number);
-		exit(EXIT_FAILURE);
-	}
 
-	number = number / (*stack)->n;
-	pop_stack(stack, line_number);
-	(*stack)->n = number;
+		if ((*stack)->n == 0)
+		{
+			_div_0_error(line_number);
+		}
+
+		(*stack)->next->n /= (*stack)->n;
+		top_n_del(stack);
+	}
+	else
+	{
+		_div_error(line_number);
+	}
+}
+
+/**
+ * _div_error - A function to Print divides ERROR to element of the stack
+ *@line_number: It's a parameter that represents the line number
+ *Return: Void (0) successful
+ */
+
+void _div_error(int line_number)
+{
+	fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+	all_free();
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * _div_0_error - A function to Print divides (ZERO)->ERROR to element
+ *@line_number: It's a parameter that represents the line number
+ *Return: Void (0) successful
+ */
+
+void _div_0_error(int line_number)
+{
+	fprintf(stderr, "L%d: division by zero\n", line_number);
+	all_free();
+	exit(EXIT_FAILURE);
 }
